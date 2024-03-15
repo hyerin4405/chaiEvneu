@@ -1,57 +1,24 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-<!--    <link rel="stylesheet" href="F_common.css">-->
-<!--    <link rel="stylesheet" href="F_header.css">-->
-<!--    <link rel="stylesheet" href="F_footer.css">-->
-<!--    <link rel="stylesheet" href="news.css">-->
+    <title>차이에브뉴 소식</title>
+    <link rel="stylesheet" th:href="@{/css/common/reset.css}">
+    <link rel="stylesheet" th:href="@{/css/common/header.css}">
+    <!--    <link rel="stylesheet" href="F_footer.css">-->
+    <!--    <link rel="stylesheet" href="news.css">-->
 </head>
 
 <body>
 
-<!-- header Start -->
-<header>
-    <div class="wrap">
-        <nav id="navBar">
-            <h1 id="logo"><a href=""><img src="images/main2/logo_black.png" alt="차이에브뉴"></a></h1>
-            <ul id="mainMenu">
-                <li><a href="">브랜드소개</a></li>
-                <li><a href="">메뉴</a></li>
-                <li><a href="">매장안내</a></li>
-                <li><a href="">에브뉴소식</a></li>
-            </ul>
-            <!-- <div id="lnb">
-                <li><a href="login.html">로그인</a></li>
-                <li><a href="join.html">회원가입</a></li>
-            </div> -->
-            <img id="hambuger" src="images/main2/menuBtn.png" alt="">
-        </nav>
-    </div>
-</header>
-
-<div class="blackBg"></div>
-<div id="mMenu">
-    <img src="images/main2/closeBtn_white.png" alt="">
-    <ul>
-        <li><a href="brand.html">브랜드소개</a></li>
-        <li><a href="menu.html">메뉴</a></li>
-        <li><a href="map.html">매장안내</a></li>
-        <li><a href="news.html">에브뉴소식</a></li>
-    </ul>
-</div>
-
-<div class="headerBox"></div>
-<!-- header End -->
-
+<header th:replace="~{/common/header::headerA}"></header>
 
 <div class="pointImg">
     <div class="wrap">
         <div class="navigator">
-            <p><img src="images/main2/homeBtn.png" alt=""></p>
+            <p><img th:src="@{/images/homeBtn.png}" alt=""></p>
             <p>></p>
             <p>에브뉴 소식</p>
         </div>
