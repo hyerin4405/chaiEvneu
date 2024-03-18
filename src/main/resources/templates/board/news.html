@@ -53,9 +53,14 @@
             </div>
             <div class="conWrap">
                 <div class="newsCon">
+                    <div th:if="${ not #lists.isEmpty( board )}" class="newsBox" th:each="row, status : ${ board }">
+                        <h3 th:text="${row.title}"></h3>
+                        <p th:text="${row.content}"></p>
+                        <p th:text="${row.createDate}"></p>
+                    </div>
                     <div class="newsBox">
                         <h3>'Happy Hour' 이벤트! 한정된 기간, 특별한 세트 메뉴를 특별한 가격으로 즐겨보세요!</h3>
-                        <p class="ellipsis-box">'Happy Hour' 이벤트! 한정된 기간, 특별한 세트 메뉴를 특별한 가격으로 즐겨보세요! 저희 'Happy Hour' 이벤트에서는 한정된 기간 동안 특별한 가격으로 다양한 세트 메뉴를 즐길 수 있습니다. 평소보다 저렴한 가격으로 맛있는 중국 요리를 맛보고 싶으신 분들을 위한 이벤트입니다. 이 기회를 놓치지 마세요</p>
+                        <p class="ellipsis-box">평소보다 저렴한 가격으로 맛있는 중국 요리를 맛보고 싶으신 분들을 위한 이벤트입니다. 이 기회를 놓치지 마세요</p>
                         <p>24.01.30</p>
                     </div>
                     <div class="newsBox">
