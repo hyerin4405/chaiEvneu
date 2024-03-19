@@ -60,6 +60,7 @@ public class BoardController {
     public String boardSave(final Board board){
         boardService.boardSave(board);
         return "redirect:/board.bo";
+
     }
 
 }
