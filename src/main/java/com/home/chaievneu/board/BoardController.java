@@ -63,7 +63,6 @@ public class BoardController {
      */
     @GetMapping("boardDetail.bo")
     public String detailBoard(@RequestParam final int boardNo, Model model){
-        System.out.println(boardNo);
         Board board = boardService.detailBoard(boardNo);
         model.addAttribute(board);
         return "board/newsDetail";
