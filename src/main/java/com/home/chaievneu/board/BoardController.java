@@ -53,6 +53,9 @@ public class BoardController {
         return "board/news";
     }
 
+    public String detailBoard(int boardNo){
+        Board board = boardService.detailBoard(boardNo);
+    }
     @GetMapping("boardSave.bo")
     public String boardSave(final Board board){
         boardService.boardSave(board);
