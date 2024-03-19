@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -42,6 +43,8 @@ public class BoardController {
     public String boardWriteForm(){
         return "board/write";
     }
+
+
     /**
      * 게시판 리스트 화면
      * @return 게시판 리스트.html
@@ -58,11 +61,19 @@ public class BoardController {
      * @param boardNo
      * @return
      */
-    public String detailBoard(int boardNo){
+    @GetMapping("boardDetail.bo")
+    public String detailBoard(@RequestParam final int boardNo, Model model){
+        System.out.println(boardNo);
         Board board = boardService.detailBoard(boardNo);
-        return "pass";
+        model.addAttribute(board);
+        return "board/newsDetail";
     }
 
+    /**
+     * 게시물 저장
+     * @param board 저장할 게시글 정보
+     * @return 리스트 페이지
+     */
     @GetMapping("boardSave.bo")
     public String boardSave(final Board board){
         int result = boardService.boardSave(board);
