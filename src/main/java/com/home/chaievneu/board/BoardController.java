@@ -53,6 +53,11 @@ public class BoardController {
         return "board/news";
     }
 
+    /**
+     * 게시글 상세 보기
+     * @param boardNo
+     * @return
+     */
     public String detailBoard(int boardNo){
         Board board = boardService.detailBoard(boardNo);
         return "pass";
@@ -60,10 +65,7 @@ public class BoardController {
 
     @GetMapping("boardSave.bo")
     public String boardSave(final Board board){
-        boardService.boardSave(board);
-
-        System.out.println("테스트");
-
+        int result = boardService.boardSave(board);
         return "redirect:/board.bo";
 
     }
