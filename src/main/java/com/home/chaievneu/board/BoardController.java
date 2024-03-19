@@ -59,6 +59,9 @@ public class BoardController {
     @GetMapping("boardSave.bo")
     public String boardSave(final Board board){
         boardService.boardSave(board);
+
+        System.out.println("테스트");
+
         return "redirect:/board.bo";
 
     }
