@@ -1,0 +1,150 @@
+/*************************************************/
+/******************** footer *********************/
+/*************************************************/
+footer{
+    padding-top: 40px;
+    height: 200px;
+    background-color: #282828;
+}
+footer .wrap{
+    display: flex;
+    justify-content: space-between;
+}
+footer h2{
+    margin: -10px 40px 0 0;
+}
+footer h2 img{
+    width: 200px;
+}
+footer div p,
+footer div ul li{
+    color : #dddddd;
+}
+footer .addr{
+    margin-left: -350px;
+}
+footer .addr > p{
+    margin-bottom: 20px;
+}
+footer .addr ul {
+    display: flex;
+}
+footer .addr ul li a{
+    margin-right: 20px;
+    color: #fff;
+    font-weight: 500;
+}
+#famillySite{
+    position: relative;
+}
+#dropDownBtn{
+    width: 180px;
+    height: 34px;
+    background-color: #ffffff;
+    border-radius: 6px;
+}
+#dropDownBtn:hover{
+    cursor: pointer;
+}
+#dropDownBtn p{
+    color: #333;
+    line-height: 34px;
+    height: 34px;
+    margin-left: 20px;
+}
+#famillySite ul{
+    width: 180px;
+    height: 130px;
+    background-color: #fff;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-top: 5px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    display: none;
+}
+#famillySite ul::-webkit-scrollbar{
+    display:none;
+}
+#famillySite ul li{
+    width: 180px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+}
+#famillySite ul li:hover{
+    background-color: rgb(51, 51, 51);
+    border-radius: 5px;
+}
+#famillySite ul li:hover a{
+    color: #fff;
+}
+#famillySite ul li a{
+    display: block;
+    padding: 5px;
+    padding: 5px 20px;
+}
+#famillySite ul li img{
+    width: 12px;
+    height: 12px;
+    margin: 10px 20px 0px 0px;
+}
+
+
+@media (max-width: 1250px) {
+    #mainMenu{
+        margin: 30px 0px 0px -300px;
+    }
+}
+    
+@media (max-width: 1000px){
+    footer{
+        height: 400px;
+    }
+    footer .wrap{
+        display: block;
+    }
+    footer h2 img{
+        width: 22%;
+        margin-bottom: 20px;
+    }
+    footer .addr {
+        margin-left: 0;
+        font-size: 14px;
+        margin-bottom: 40px;
+    }
+    footer .addr > p{
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 620px) {
+    footer{
+        height: 400px;
+    }
+    footer .wrap{
+        display: block;
+    }
+    footer h2 img{
+        width: 120px;
+        margin-bottom: 20px;
+    }
+    footer .addr {
+        margin-left: 0;
+        font-size: 14px;
+        margin-bottom: 40px;
+    }
+    footer .addr > p{
+        margin-bottom: 20px;
+    }
+    footer .addr ul{
+        display: inline;
+        margin-bottom: 100px;
+    }
+    #famillySite ul{
+        height: 100px;
+    }
+    
+}

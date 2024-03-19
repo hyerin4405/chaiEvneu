@@ -38,7 +38,7 @@ public class BoardController {
     }
 
 
-    @GetMapping("/board.write")
+    @GetMapping("/write.bo")
     public String boardWriteForm(){
         return "board/write";
     }
@@ -53,5 +53,10 @@ public class BoardController {
         return "board/news";
     }
 
+    @GetMapping("boardSave.bo")
+    public String boardSave(final Board board){
+        boardService.boardSave(board);
+        return "redirect:/board.bo";
+    }
 
 }
