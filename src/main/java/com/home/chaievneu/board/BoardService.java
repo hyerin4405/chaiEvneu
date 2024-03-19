@@ -20,7 +20,7 @@ public class BoardService {
     }
 
     public Board detailBoard (int boardNo){
-        return boardMapper.detailBoard(boardNo)
+        return boardMapper.detailBoard(boardNo);
     }
     public int boardSave(Board board){
         return boardMapper.boardSave(board);
