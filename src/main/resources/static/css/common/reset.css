@@ -1,0 +1,218 @@
+@charset "UTF-8";
+@import url("https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.1/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css");
+
+
+
+/*************************************************/
+/********************* 리셋 **********************/
+/*************************************************/
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+ul,
+li,
+div,
+p,
+img,
+a {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: #222;
+    font-family: "Wanted Sans Variable", "Wanted Sans", -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    text-decoration: none;
+    line-height: 26px;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+}
+
+
+/*************************************************/
+/***************** public Class ******************/
+/*************************************************/
+.wrap {
+    width: 1400px;
+    margin: 0 auto;
+}
+
+.opa {
+    opacity: 1;
+}
+
+
+/* 네비게이션 */
+.navigator {
+    position: absolute;
+    display: flex;
+    margin: 50px 0 10px;
+    z-index: 99;
+}
+
+.navigator>p {
+    margin-right: 10px;
+    font-size: 15px;
+    color: #dfdfdf;
+}
+
+.navigator img {
+    width: 18px;
+    margin-top: 5px;
+}
+
+.navigator img:hover,
+.navigator p:last-of-type {
+    cursor: pointer;
+}
+
+.pageTitle {
+    font-size: 22px;
+    margin-bottom: 40px;
+    position: absolute;
+    top: 90px;
+    color: #ffffff;
+}
+
+
+/* 모바일 - 햄버거 메뉴 */
+#hamburger {
+    width: 30px;
+    height: 30px;
+    margin-top: 19px;
+    display: none;
+}
+
+#hamburger:hover {
+    cursor: pointer;
+}
+
+.blackBg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(000, 000, 000, 0.5);
+    z-index: 99999;
+    display: none;
+}
+
+#mMenu {
+    background-color: rgb(36, 36, 36);
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 66%;
+    height: 100%;
+    z-index: 999909;
+    padding: 20px;
+    display: none;
+}
+
+#mMenu img {
+    width: 30px;
+    height: 30px;
+    float: right;
+    margin-right: 10px;
+}
+
+#mMenu img:hover {
+    cursor: pointer;
+}
+
+#mMenu ul {
+    height: 200px;
+    position: absolute;
+    top: 50%;
+    margin-top: -120px;
+}
+
+#mMenu li a {
+    color: #fff;
+    font-size: 24px;
+}
+
+#mMenu li {
+    margin-bottom: 40px;
+    margin-left: 20px;
+}
+
+
+/* 서브 타이틀 이미지 */
+.pointImg {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.pointImg .imgBox {
+    height: 300px;
+    display: block;
+    margin: 0 auto;
+    transition: width 1s;
+    background: url(../../images/mainImg2.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    overflow: hidden;
+}
+
+.pointImg .wrap>p {
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    z-index: 99;
+    color: #ffffff;
+    top: 250px;
+    line-height: 45px;
+}
+
+.pointImg .wrap>p span {
+    color: #000;
+}
+
+
+@media (max-width: 1399px) {
+    .wrap {
+        width: 1200px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 1250px) {
+    .wrap {
+        width: 1000px;
+        margin: 0 auto;
+    }
+}
+
+
+@media (max-width: 1000px) {
+    .wrap {
+        width: 90%;
+    }
+}
+
+
+@media (max-width: 620px) {
+    .wrap {
+        width: 90%;
+    }
+}
+
+@media (max-width: 510px) {
+    .pointImg>.wrap>p {
+        top: 270px;
+        font-size: 1.3rem;
+        line-height: 2rem;
+    }
+}
