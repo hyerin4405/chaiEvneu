@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+
+  <header th:fragment="adminHeader">
+    <style>
+      header{
+        width: 250px;
+        height: 100%;
+        position: fixed;
+        left: 0;
+        top: 0;
+        background-color: #2a2a2a;
+        padding: 20px;
+      }
+      header li a, header p, header ul {
+          color: white;
+      }
+        header > ul{
+        width: 100%;
+        }
+      header ul li:first-of-type{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          color: gray;
+          margin-bottom: 10px;
+      }
+      header ul li:first-of-type img{
+          width: 20px;
+          margin-right: 10px;
+      }
+      header ul li a{
+        font-size: 16px;
+        padding: 8px 0 8px 0;
+        width: 100%;
+        display: flex;
+      }
+      header ul li a img{
+        width: 26px;
+        height: auto;
+        margin-right: 18px;
+      }
+      header h1 img{
+        width: 200px;
+        margin-bottom: 20px;
+      }
+
+      .writePage{
+          width: 250px;
+          height: 50px;
+          position: fixed;
+          bottom: 20px;
+          background-color: #fff;
+          color: black;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          padding: 10px;
+      }
+      .writePage:hover{
+          cursor: pointer;
+      }
+      .writeIcon{
+          width: 30px;
+          margin-right: 50px;
+      }
+
+    </style>
+
+    <h1><img th:src="@{/images/logo_white.png}" alt=""></h1>
+    <ul>
+        <li>게시판 관리 <img th:src="@{/images/plus.png}"></li>
+        <li><a href="admin.page"><img th:src="@{/images/listIcon.png}" alt="">전체 게시글</a></li>
+        <li><a href=""><img th:src="@{/images/listIcon.png}" alt="">공지사항</a></li>
+        <li><a href=""><img th:src="@{/images/listIcon.png}">이벤트</a></li>
+        <li><a href=""><img th:src="@{/images/listIcon.png}">뉴스</a></li>
+    </ul>
+
+    <button th:onclick="location.href='write.bo'" class="writePage"><img class="writeIcon" th:src="@{/images/writeIcon.png}" />게시글 작성</button>
+  </header>
+
+</body>
+</html>
