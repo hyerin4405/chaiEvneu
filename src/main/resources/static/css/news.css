@@ -34,40 +34,38 @@
 #newsConWrap .mMenu li:first-of-type a{
     color: #000;
 }
-
 #newsConWrap .wrap div:nth-of-type(2)>.newsCon:first-child {
     border-top: 1px solid black;
 }
-
 .ellipsis-box {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     word-wrap: break-word;
     text-overflow: ellipsis;
     overflow: hidden;
-    
     /* ★★ 설정이 필요한 영역 ★★ */
     /* ★★ 3줄 이상은 말줄임 처리 ★★ */
     -webkit-line-clamp: 3;
-    
     /* ★★ line-height:20px일때 ★★ */
-    height: 90px; /* ★★ line-height * 3 ★★ */
 }
-
 .newsCon .newsBox {
     height: 140px;
     border-bottom: 1px solid black;
     padding: 20px 0px 20px 0px;
+    display: flex;
+    align-items : center;
 }
 .newsCon .newsBox:hover {
     cursor: pointer;
     background-color: #ebebeb;
     transition: background 0.5s;
 }
+
 .newsCon .newsBox>h3,
 .newsCon .newsBox>p {
     float: left;
 }
+
 .newsCon .newsBox>h3,
 .newsCon .newsBox>p:nth-of-type(2) {
     height: 90px;
@@ -75,11 +73,12 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     padding-top: 30px;
-
 }
+
 .newsCon .newsBox>h3 {
     width: 30%;
 }
+
 .newsCon .newsBox>p:nth-of-type(1) {
     width: 54%;
     line-height: 30px;
@@ -90,6 +89,9 @@
     text-align: center;
     font-size: 13px;
     color: #333;
+}
+.newsConWrap{
+    width: 100%;
 }
 .newsConWrap .wrap>div:nth-of-type(2) {
     margin-bottom: 30px;

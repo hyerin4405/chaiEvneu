@@ -39,9 +39,12 @@ public class BoardController {
     }
 
 
+    /**
+     * @return 게시글 작성 페이지
+     */
     @GetMapping("/write.bo")
     public String boardWriteForm(){
-        return "board/write";
+        return "admin/write";
     }
 
 
@@ -52,8 +55,43 @@ public class BoardController {
     @GetMapping("/board.bo")
     public String boardList(Model model){
         List<Board> board = boardService.boardList();
+
+        for(int i = 0; i < board.size(); i++){
+            var con = board.get(i).getContent();
+            board.get(i).setContent(removeHtmlTag(con));
+        }
+
         model.addAttribute("board", board);
         return "board/news";
+    }
+
+    @GetMapping("admin.page")
+    public String adminList(Model model){
+        List<Board> board = boardService.boardList();
+
+        for(int i = 0; i < board.size(); i++){
+            var con = board.get(i).getContent();
+            board.get(i).setContent(removeHtmlTag(con));
+        }
+
+        model.addAttribute("board", board);
+        return "admin/list";
+    }
+
+    /**
+     * HTML 태그 제거
+     * @param con html 제거가 필요한 문장
+     * @return html 태그가 제거된 문장
+     */
+    public String removeHtmlTag(String con){
+
+        String result = "";
+        String strRegExp = "<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>";
+        if(con != null){
+            result = con.replaceAll(strRegExp, "");
+        }
+        return result;
+
     }
 
     /**
@@ -79,5 +117,7 @@ public class BoardController {
         return "redirect:/board.bo";
 
     }
+
+
 
 }

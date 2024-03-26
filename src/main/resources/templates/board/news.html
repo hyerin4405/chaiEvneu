@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
     <meta charset="UTF-8">
@@ -51,14 +51,15 @@
                     <li><a href="">이벤트</a></li>
                 </ul>
             </div>
-            <div class="conWrap">
+            <div class="newsConWrap">
                 <div class="newsCon">
-                    <div th:if="${ not #lists.isEmpty( board )}" class="newsBox" th:each="row, status : ${ board }">
-                        <h3 th:text="${row.title}" th:onclick="|location.href='@{boardDetail.bo(boardNo=${row.boardNo})}'|"></h3>
-                        <p th:text="${row.content}"></p>
+                    <div th:if="${ not #lists.isEmpty( board )}" class="newsBox" th:each="row, status : ${ board }" th:onclick="|location.href='@{boardDetail.bo(boardNo=${row.boardNo})}'|">
+                        <h3 th:text="${row.title}"></h3>
+                        <p th:text="${row.content}" class="ellipsis-box"></p>
                         <p th:text="${row.createDate}"></p>
                     </div>
                 </div>
+
                 <ul class="pagination">
                     <li><a href="">PREV</a></li>
                     <li><a href="">1</a></li>
@@ -73,6 +74,7 @@
     </div>
 
     <footer th:replace="~{/common/footer :: footer}"></footer>
+
 
 
 

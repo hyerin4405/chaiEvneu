@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>글 작성 페이지</title>
+    <link rel="stylesheet" th:href="@{/css/common/reset.css}">
+    <link rel="stylesheet" th:href="@{/css/news.css}">
+
+    <script th:src="@{/js/jquery-3.7.1.min.js}"></script>
+    <!-- summernote   -->
+    <script th:src="@{/js/summerNote/summernote-lite.js}"></script>
+    <script th:src="@{/js/summerNote/lang/summernote-ko-KR.js}"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+</head>
+<body>
+
+
+    <header th:replace="~{/common/adminHeader::adminHeader}"></header>
+
+    <div id="content">
+        <h2>게시글 작성하기</h2>
+        <div id="writeBox">
+            <form action="boardSave.bo">
+                <div>
+                    <input type="text" name="title" class='title' placeholder="글 제목"/>
+                    <input type="text" name="category" class="content" placeholder="카테고리"/>
+                </div>
+                <div>
+                    <textarea id="summernote" name="content" cols="30" rows="10" placeholder="글 내용을 입력해주세요."></textarea>
+                </div>
+                <div class="bBox">
+                    <button type="button">이전페이지로</button>
+                    <button type="button" id="writeBtn">등록하기</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+
+
+    <script>
+
+        $('#writeBtn').on('click',function (){
+
+            var title = $('.title').val();
+            var content = $('#summernote').val();
+            var category = $('.category').val();
+
+            if(title == ''){
+                alert('제목을 입력해주세요.');
+                return
+            }
+            if(content == ''){
+                alert('내용이 없습니다.');
+                return;
+            }
+            if(category == ''){
+                alert('카테고리를 지정해주세요.');
+                return;
+            }
+
+            $('#writeBtn').attr('type','submit');
+
+
+
+
+
+        });
+
+        $('#summernote').summernote({
+            // 에디터 높이
+            height: 400,
+            // 에디터 한글 설정
+            lang: "ko-KR",
+            // 에디터에 커서 이동 (input창의 autofocus라고 생각)
+            focus : true,
+            toolbar: [
+                // [groupName, [list of button]]
+                ['fontname', ['fontname']],
+                ['fontsize', ['fontsize']],
+                ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+                ['color', ['forecolor','color']],
+                ['table', ['table']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['height', ['height']],
+                ['insert',['picture','link','video']],
+                ['view', ['fullscreen', 'help']]
+            ],
+            fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
+            fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
+
+        });
+    </script>
+
+</body>
+</html>
