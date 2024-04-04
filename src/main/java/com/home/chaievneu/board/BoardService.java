@@ -1,9 +1,13 @@
 package com.home.chaievneu.board;
 
+import com.home.chaievneu.common.Pagination;
+import com.home.chaievneu.common.PagingResponse;
+import com.home.chaievneu.common.SearchDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -16,8 +20,19 @@ public class BoardService {
      * 게시글 리스트 조회
      * @return 게시글 리스트
      */
-    public List<Board> boardList(){
-        return boardMapper.boardList();
+    public PagingResponse<Board> boardList(final SearchDto params){
+
+        int count = boardMapper.count(params);
+
+        if(count < 1){
+            return new PagingResponse<>(Collections.emptyList(), null);
+        }
+
+        Pagination pagination = new Pagination(count, params);
+        params.setPagination(pagination);
+
+        List<Board> list = boardMapper.boardList(params);
+        return new PagingResponse<>(list, pagination);
     }
 
     /**
@@ -45,7 +60,7 @@ public class BoardService {
      * @return 결과
      */
     @Transactional
-    public int updateBoard(Board board){
+    public int boardChange(Board board){
         return boardMapper.updateBoard(board);
     }
 
@@ -55,7 +70,7 @@ public class BoardService {
      * @return 삭제 성공 여부
      */
     @Transactional
-    public int deleteBoard(int boardNo){
+    public int boardDelete(int boardNo){
         return boardMapper.deleteBoard(boardNo);
     }
 

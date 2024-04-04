@@ -1,5 +1,6 @@
 package com.home.chaievneu.board;
 
+import com.home.chaievneu.common.SearchDto;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -11,7 +12,14 @@ public interface BoardMapper {
      * 게시글 리스트 조회
      * @return 게시글 리스트
      */
-    List<Board> boardList();
+    List<Board> boardList(SearchDto params);
+
+    /**
+     * 전체 게시글 수 카운팅 (페이징에 이용)
+     * @return 게시글 수
+     */
+    int count(SearchDto params);
+
 
     /**
      * 게시글 상세 조회
@@ -41,11 +49,7 @@ public interface BoardMapper {
      */
     int deleteBoard(int boardNo);
 
-    /**
-     * 전체 게시글 수 카운팅 (페이징에 이용)
-     * @return 게시글 수
-     */
-    int counting();
+
 
 
 }
