@@ -72,12 +72,15 @@ public class BoardController {
     @GetMapping("/board.bo")
     public String boardList(@ModelAttribute("params") final SearchDto params, Model model){
 
+        //recordSize 변경
+        params.setRecordSize(5);
+
         PagingResponse<Board> board = boardService.boardList(params);
 
-//        for(int i = 0; i < board.size(); i++){
-//            var con = board.get(i).getContent();
-//            board.get(i).setContent(removeHtmlTag(con));
-//        }
+        for(int i = 0; i < board.getList().size(); i++){
+            var con = board.getList().get(i).getContent();
+            board.getList().get(i).setContent(removeHtmlTag(con));
+        }
 
         model.addAttribute("board", board);
         return "board/news";
@@ -145,56 +148,11 @@ public class BoardController {
 
 
     /**
-     * summernote 이미지 폴더에 저장
+     * summernote 이미지 로컬 저장 후 html코드 반환
      * @param multipartFile
      * @param httpServletRequest
-     * @return
+     * @return <img>태그
      */
-//    @RequestMapping(value = "/uploadSummernoteImageFile", produces = "application/json; charset=utf8")
-//    @ResponseBody
-//    public String uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest httpServletRequest) {
-//
-//        // Json 객체를 생성
-//        JsonObject jsonObject = new JsonObject();
-//
-//        // 이미지 파일지 저장될 경로를 설정
-//        String fileRoot = realPath;
-//
-//        // 업로드 된 파일의 원본 파일명과 확장자를 추출
-//        String originalFileName = multipartFile.getOriginalFilename();
-//        String extension = originalFileName.substring(originalFileName.lastIndexOf("."));
-//
-//        // 새로운 파일명 생성 (고유한 식별자 + 확장자)
-//        String savedFileName = UUID.randomUUID() + extension;
-//
-//        // 저장될 파일의 경로와 파일명을 나타내는 File 객체 생성
-//        File targetFile = new File(fileRoot + savedFileName);
-//
-//        try {
-//            //업로드 된 파일의 InputStream 열기
-//            java.io.InputStream fileStream = multipartFile.getInputStream();
-//
-//            // 업로드된 파일을 지정된 경로에 저장
-//            FileUtils.copyInputStreamToFile(fileStream, targetFile);
-//
-//            // JSON 객체에 이미지 URL과 응답 코드 추가
-//            jsonObject.addProperty("url", "/upload/image/fileupload/29/" + savedFileName);
-//            jsonObject.addProperty("responseCode", "success");
-//
-//        } catch (IOException e) {
-//
-//            // 파일 저장 중 오류가 발생한 경우 해당 파일 삭제 및 응답 에러 코드 추가
-//            FileUtils.deleteQuietly(targetFile);
-//            jsonObject.addProperty("responsecode", "error");
-//            e.printStackTrace();
-//        }
-//
-//        // Json 객체를 문자열로 변환하여 반환
-//        String a = jsonObject.toString();
-//        return a;
-//
-//    }
-
     @RequestMapping(value = "/uploadSummernoteImageFile", produces = "application/json; charset=utf8")
     @ResponseBody
     public String uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest httpServletRequest) {
