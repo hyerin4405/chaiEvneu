@@ -93,7 +93,7 @@ public class BoardController {
      * @return 관리자 리스트 목록
      */
     @GetMapping("admin.page")
-    public String adminList(@ModelAttribute("params") final SearchDto params, Model model){
+    public String adminList(@ModelAttribute("params") final SearchDto params, Model model, String category){
 
         PagingResponse<Board> board = boardService.boardList(params);
 
@@ -129,9 +129,12 @@ public class BoardController {
      */
     @GetMapping("boardDetail.bo")
     public String detailBoard(@RequestParam final int boardNo, Model model){
+
         Board board = boardService.detailBoard(boardNo);
         model.addAttribute(board);
+
         return "board/newsDetail";
+
     }
 
     /**

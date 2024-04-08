@@ -78,6 +78,7 @@
 
 .newsCon .newsBox>h3 {
     width: 30%;
+    padding-left:30px;
 }
 
 .newsCon .newsBox>p:nth-of-type(1) {
