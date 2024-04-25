@@ -130,6 +130,14 @@
             font-size: 14px;
             text-align: center;
         }
+
+        .listTable {
+            -webkit-user-select: none; /* Chrome, Safari, Opera */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* IE 10+ */
+            user-select: none; /* Standard syntax */
+        }
+
     </style>
 
     <div id="content">
@@ -304,6 +312,73 @@
         </div>
     </div>
 
+
+
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+
+        // 변수 초기화
+        let dragStartIndex = -1;
+        let dragEndIndex = -1;
+        let dragging = false;
+
+        // 마우스 다운 이벤트 리스너 등록
+        document.addEventListener('mousedown', function(e) {
+            // 마우스 다운 이벤트가 발생한 요소가 행의 체크박스가 아닌 경우
+            if (e.target && e.target.nodeName === 'TD') {
+                // 행의 인덱스를 찾아서 저장
+                dragStartIndex = getRowIndex(e.target.parentNode);
+                dragEndIndex = dragStartIndex;
+                // 드래그 상태를 활성화하고 체크박스 체크
+                dragging = true;
+                checkRows();
+            }
+        });
+
+        // 마우스 업 이벤트 리스너 등록
+        document.addEventListener('mouseup', function(e) {
+            // 드래그 상태를 비활성화
+            dragging = false;
+        });
+
+        // 마우스 이동 이벤트 리스너 등록
+        document.addEventListener('mousemove', function(e) {
+            // 드래그 중일 때
+            if (dragging) {
+                // 드래그된 행의 인덱스 계산
+                dragEndIndex = getRowIndex(e.target.parentNode);
+                // 선택된 영역의 체크박스 체크
+                checkRows();
+            }
+        });
+
+        // 행의 인덱스를 찾는 함수
+        function getRowIndex(row) {
+            // 행의 인덱스 반환
+            return row.rowIndex;
+        }
+
+        // 선택된 행들의 체크박스 체크하는 함수
+        function checkRows() {
+            // 시작 인덱스와 종료 인덱스 사이의 행들의 체크박스를 체크
+            const startIndex = Math.min(dragStartIndex, dragEndIndex);
+            const endIndex = Math.max(dragStartIndex, dragEndIndex);
+            const rows = document.querySelectorAll('.listTable tbody tr');
+            for (let i = 0; i < rows.length; i++) {
+                const checkbox = rows[i].querySelector('input[type="checkbox"]');
+                // 체크박스 체크 여부에 따라 배경색 변경
+                if (i >= startIndex && i <= endIndex) {
+                    checkbox.checked = true;
+                    rows[i].style.backgroundColor = '#e0f0ff'; // 연한 하늘색 배경색
+                } else {
+                    checkbox.checked = false;
+                    rows[i].style.backgroundColor = ''; // 기본 배경색으로 복원
+                }
+            }
+        }
+
+        /*]]>*/
+    </script>
 
 
 </body>

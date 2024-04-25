@@ -157,6 +157,17 @@
                         uploadSummernoteImageFile(files[i], this, caption)
                     }
                 },
+                onMediaDelete: function ($target, deitor, $deitable) {
+                    if(confirm('이미지를 삭제 하시겠습니까?')) {
+                        var deletedImageUrl = $target
+                            .attr('src')
+                            .split('/')
+                            .pop()
+
+                        //ajax 함수 호출
+                        deleteSummernoteImageFile(deletedImageUrl)
+                    }
+                }
             },
 
         });
@@ -184,6 +195,19 @@
                 error : () => {
                     alert("업로드 실패!!!!!");
                 }
+            })
+        }
+
+        function deleteSummernoteImageFile(imageName){
+            data = new FormData()
+            data.append('file', imageName)
+            $.ajax({
+                data:data,
+                type: 'POST',
+                url : 'dleteSummernoteImageFile',
+                contentType : false,
+                enctype : 'multipart/form-data',
+                processData : false,
             })
         }
     </script>

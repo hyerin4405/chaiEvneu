@@ -18,6 +18,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.UUID;
 
@@ -151,7 +153,7 @@ public class BoardController {
 
 
     /**
-     * summernote 이미지 로컬 저장 후 html코드 반환
+     * summernote 이미지 로컬 저장 후 <img>코드로 반환
      * @param multipartFile
      * @param httpServletRequest
      * @return <img>태그
@@ -218,6 +220,36 @@ public class BoardController {
         MessageDto message = new MessageDto("게시글이 삭제 되었습니다.", "/admin.page", RequestMethod.GET, null);
         return showMessageAndRedirect(message, model);
     }
+
+
+
+    private static final String realPath = "classpath:/static/images/upload/";
+
+    /**
+     * 이미지 삭제
+     * @param fileName
+     */
+    @RequestMapping(value="/deleteSummernoteImageFile", produces="application/json; charset=utf8")
+    @ResponseBody
+    public void deleteSummernoteimageFile(@RequestParam("file") String fileName){
+        //폴더 위치
+        String filePath = realPath + "/upload/image/fileupload/tmp/";
+
+        //해당 파일 삭제
+        deleteFile(filePath, fileName);
+
+    }
+
+    private void deleteFile(String filePath, String fileName){
+        Path path = Paths.get(filePath, fileName);
+
+        try{
+            Files.delete(path);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 
     @GetMapping("boardChangeForm.bo")
     public String boardChangeForm(@RequestParam final int boardNo, Model model){
