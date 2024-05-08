@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>디테일</title>
+    <link rel="stylesheet" th:href="@{/css/common/reset.css}">
+    <link rel="stylesheet" th:href="@{/css/common/header.css}">
+    <link rel="stylesheet" th:href="@{/css/common/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/news.css}">
+</head>
+<body>
+
+    <header th:replace="~{/common/header::header}"></header>
+
+    <div class="wrap" id="detailBox">
+        <h1 th:text="${board.getCategory()}"></h1>
+        <div class="titleBox">
+            <p th:text="${board.getTitle()}"></p>
+            <p th:text="${board.getCreateDate()}"></p>
+        </div>
+        <div id="contentArea">
+            <p th:utext="${board.getContent()}"></p>
+        </div>
+        <div class="buttonBox">
+            <button th:onclick="location.href='board.bo'">목록으로</button>
+        </div>
+
+
+    </div>
+
+    <style>
+        body{
+            background-color: rgba(248, 248, 248, 0.42);
+        }
+
+        #detailBox h1{
+            margin: 100px 0 0 0;
+            padding: 20px 0 20px;
+            border-bottom: 1px solid gray;
+        }
+        .titleBox{
+            padding: 15px 20px 15px;
+            display: flex;
+            justify-content: space-between;
+            background: #2a2a2a;
+        }
+        .titleBox p{
+            font-size: 15px;
+            color: #fff;
+        }
+        #contentArea{
+            padding: 20px 20px 100px 20px;
+            border-bottom: 1px solid gray;
+            margin-bottom: 50px;
+            background-color: #fff;
+        }
+        .buttonBox{
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 200px;
+        }
+        button{
+            width: 120px;
+            height: 50px;
+            background-color: #2a2a2a;
+            color: #fff;
+            border-radius: 10px;
+        }
+        button:hover{
+            cursor: pointer;
+        }
+    </style>
+
+    <footer th:replace="~{/common/footer::footer}"></footer>
+
+</body>
+</html>
